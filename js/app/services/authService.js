@@ -1,4 +1,4 @@
-﻿angular.module('myownApp').factory('authService', ['$http', '$q', '$rootScope', '$window', '$location', 'localStorageService', 'urls', function ($http, $q, $rootScope, $window, $location, localStorageService, urls) {
+﻿angular.module('myownApp').factory('authService', ['$http', '$q', '$rootScope', '$window', '$location', 'urls', function ($http, $q, $rootScope, $window, $location, urls) {
 
     var authServiceFactory = {};
 
@@ -11,7 +11,7 @@
         $http.post(urls.baseAPIUrl + '/Login/Login', loginData)
             .success(function (response) {
                 if (!response.Error) {
-                    localStorageService.set('authorizationData', response.UserData);
+                    localStorage.setItem('authorizationData', response.UserData);
                     _populaAuthData();
                     deferred.resolve(response);
                 }
@@ -28,7 +28,7 @@
 
     var _logOut = function () {
 
-        localStorageService.remove('authorizationData');
+        localStorage.removeItem('authorizationData');
 
         _usuarioLogado.login = null;
         _usuarioLogado.logado = false;
@@ -39,7 +39,7 @@
 
     var _populaAuthData = function () {
 
-        var authData = localStorageService.get('authorizationData');
+        var authData = localStorage.getItem('authorizationData');
         if (authData) {
             _usuarioLogado.login = authData.Login;
             _usuarioLogado.logado = true;

@@ -1,11 +1,7 @@
 ﻿angular.module('myownApp')
-    .config(['$httpProvider', '$routeProvider', 'cfpLoadingBarProvider', function ($httpProvider, $routeProvider, $cfpLoadingBarProvider) {
+    .config(['$httpProvider', '$routeProvider', function ($httpProvider, $routeProvider) {
 
         $httpProvider.interceptors.push('authInterceptorService');
-
-        $cfpLoadingBarProvider.includeSpinner = false;
-        $cfpLoadingBarProvider.includeBar = true;
-        $cfpLoadingBarProvider.latencyThreshold = 50;
 
         $routeProvider
             .when('/login', {

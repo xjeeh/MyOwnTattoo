@@ -1,5 +1,5 @@
 ﻿'use strict';
-angular.module('myownApp').factory('authInterceptorService', ['$q', '$window', '$injector', 'localStorageService', function ($q, $injector, $window, localStorageService) {
+angular.module('myownApp').factory('authInterceptorService', ['$q', '$window', '$injector', function ($q, $injector, $window) {
 
     var authInterceptorServiceFactory = {};
 
@@ -7,7 +7,7 @@ angular.module('myownApp').factory('authInterceptorService', ['$q', '$window', '
 
         config.headers = config.headers || {};
 
-        var authData = localStorageService.get('authorizationData');
+        var authData = localStorage.getItem('authorizationData');
         if (authData) {
             config.headers.Authorization = 'Bearer ' + authData.Token;
         }
