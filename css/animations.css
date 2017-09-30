@@ -1,0 +1,57 @@
+﻿.fade-element-in.ng-enter {
+    transition: 0.8s linear all;
+    opacity: 0;
+}
+
+.fade-element-in-init .fade-element-in.ng-enter {
+    opacity: 1;
+}
+
+.fade-element-in.ng-enter.ng-enter-active {
+    opacity: 1;
+}
+
+.fade-element-in.ng-leave {
+    transition: 0.3s linear all;
+    opacity: 1;
+}
+.fade-element-in.ng-leave.ng-leave-active {
+    opacity: 0;
+}
+
+/*hide element (but only change visibility)*/
+.dispose{
+    opacity: 0 !important;
+}
+
+
+/*ng-show*/
+.animate-show.ng-hide-add {
+    animation: 0.1s keyFrameLeave ease;
+}
+
+.animate-show.ng-hide-remove {
+    animation: 0.5s keyFrameEnter ease;
+}
+
+@keyframes keyFrameEnter {
+    0% {
+        transform: translate(0,100px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translate(0,0);
+        opacity: 1;
+    }
+}
+
+@keyframes keyFrameLeave {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}

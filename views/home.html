@@ -1,0 +1,146 @@
+﻿<div ng-include="'views/partials/header.html'"></div>
+
+<div class="home container">
+
+    <div class="row">
+        <div class="stepWizard col-xs-12">
+            <div class="steps clearfix">
+
+                <div class="step col-xs-4 clearfix" ng-class="{'done' : dayDetail }">
+                    <div class="number">1</div>
+                    <div class="title">Data</div>
+                    <div class="progressBar"></div>
+                </div>
+
+                <div class="step col-xs-4 clearfix" ng-class="{'done' : model.selectedHour }">
+                    <div class="number">2</div>
+                    <div class="title">Horário</div>
+                    <div class="progressBar"></div>
+                </div>
+
+                <div class="step col-xs-4 clearfix" ng-class="{'done' : model.costumer.name }">
+                    <div class="number">3</div>
+                    <div class="title">Dados</div>
+                    <div class="progressBar"></div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="calendar col-xs-12 col-md-4 " ng-init="listPeriodDetail()">
+            <p class="hint" ng-class="{'dispose': model.selectedDate }">Escolha uma data para começar <i class="fa fa-arrow-down faa-float animated faa-fast"></i></p>
+
+            <div class="block">
+                <div kendo-calendar="calendar" id="calendar" ng-model="model.startDate" k-on-change="changeDay()" k-on-navigate="changeMonth()"></div>
+
+                <div class="legends">
+                    <p class="col-xs-12 title">Legenda</p>
+                    <div class="itens">
+                        <div class="item"><span class="available"></span> Disponível</div>
+                        <div class="item"><span class="unavailable"></span> Indisponível</div>
+                    </div>
+                    <p ng-if="is.LoadingPeriod" class="loading"><i class="fa fa-2x fa-refresh faa-spin animated"></i></p>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="list col-xs-12 col-md-4 text-center " ng-if="model.selectedDate">
+            <p class="hint" ng-class="{'dispose': model.selectedHour }">Selecione o horário desejado <i class="fa fa-arrow-down faa-float animated faa-fast"></i></p>
+            <div ng-if="!is.Loading" class="animate-show">
+                <table>
+                    <thead>
+                        <tr>
+                            <td>Horário</td>
+                            <td>
+                                Disponibilidade
+                                <i class="fa fa-close close-modals" ng-click="closeModals()"></i>
+                            </td>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <!-- Show intervals with details -->
+                        <tr ng-repeat="interval in dayDetail.List" ng-class="{'selected' : interval.StartTime == model.selectedHour}" ng-click="interval.Booking.User != null && interval.Status > 0 && interval.Booking && showBookingDetail(interval.Booking)">
+                            <td>{{interval.StartTime | hourAndMinutes}}</td>
+                            <td ng-click="interval.Status == 0 && selectHour(interval.StartTime) && addBooking()" ng-switch="interval.Status">
+                                <span ng-switch-when="1">
+                                    {{intervalStatus[interval.Status]}}
+                                    <img ng-if="interval.Booking.User != null && interval.Status > 0 && interval.Booking" src="img/stock_view-details.png" style="margin-left: 5px" width="25" title="Detalhes" />
+                                </span>
+                                <span ng-switch-when="2">{{intervalStatus[interval.Status]}}</span>
+                                <button ng-switch-when="0" class="btn main-button sucess-button">{{intervalStatus[interval.Status]}}</button>
+
+                            </td>
+                        </tr>
+
+                        <!-- If establishment doesn't have available work interval for current day -->
+                        <tr ng-if="dayDetail.List.length == 0" class="odd">
+                            <td colspan="2">Estabelecimento fechado</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+
+        <div class="form col-xs-12 col-md-4 fade-element-in" ng-if="model.selectedHour">
+            <p class="hint" ng-class="{'dispose': !model.selectedHour }">Confirmação <i class="fa fa-arrow-down faa-float animated faa-fast"></i></p>
+            <form name="costumerDetail">
+
+                <p class="header">
+                    Deseja realmente realizar esta reserva?
+                    <i class="fa fa-close close-modals" ng-click="model.selectedHour = null"></i>
+                </p>
+
+                <button class="btn main-button reserve" ng-if="model.selectedHour" ng-disabled="is.loadingAdd" ng-click="addBooking()">
+                    Confirmar
+                    <i class="fa fa-refresh  fa-spin fa-1x fa-fw" ng-if="is.loadingAdd"></i>
+                </button>
+            </form>
+        </div>
+
+    </div>
+
+</div>
+
+<div ng-include="'views/partials/footer.html'"></div>
+
+<script>
+    function ShowNavigationButton(opt) {
+        var increment = opt == 'next' ? 1 : 0;
+
+        var currentMonth = moment().month();
+        var selectedMonth = moment($("td[role='gridcell']:not(.k-other-month):first").children("a").attr("data-value"), "YYYY/MM/DD").add(1 + increment, "months").month();
+
+        // Disable 'other-month' days
+        $("table.k-content").css("min-height", "287px");
+        $(".k-other-month").css("visibility", "hidden");
+        $("#calendar table tbody tr").each(function () {
+            var hasVisibleDay = false;
+            $(this).children("td").each(function () {
+                if ($(this).css("visibility") != "hidden")
+                    hasVisibleDay = true;
+            });
+            if (!hasVisibleDay)
+                $(this).remove();
+        });
+
+        $(".k-calendar .k-header .k-nav-prev").css("visibility", selectedMonth - currentMonth <= 0 ? "hidden" : "visible");
+        $(".k-calendar .k-header .k-nav-next").css("visibility", selectedMonth - currentMonth >= 3 ? "hidden" : "visible");
+    };
+
+    $(document).ready(function () {
+        // Disable the click in 'month name'
+        $(".k-calendar .k-header .k-link[aria-live='assertive']").unbind();
+
+        // Enable or disable next/previous button if exceed the minimum interval
+        ShowNavigationButton();
+
+        $(".k-nav-next, .k-nav-prev").on('click', function () {
+            ShowNavigationButton($(this).hasClass('k-nav-next') ? 'next' : 'prev');
+        });
+    });
+
+</script>

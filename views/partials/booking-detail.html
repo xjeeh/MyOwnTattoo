@@ -1,0 +1,55 @@
+﻿<div class="booking-detail-modal">
+    <div class="modal-header">
+        <button type="button" class="close fa-3x" data-dismiss="modal" ng-click="closeBookingDetail()">&times;</button>
+        <h3 class="modal-title text-center" id="modal-title" style="color: black !important">Detalhes da reserva</h3>
+    </div>
+    <div class="modal-body" id="modal-body" style="color: black !important">
+
+        <div class="clearfix">
+            <label class="col-xs-4 ">Status de pagamento</label>
+            <div class="col-xs-8">
+                <span title="{{paymentStatus[model.bookingDetail.PaymentStatus].description}}">
+                    {{paymentStatus[model.bookingDetail.PaymentStatus].status}}
+                </span>
+                <button class="btn btn-success pull-right" ng-if="model.bookingDetail.PaymentStatus == 1" ng-click="redirectToPaymentPage(model.bookingDetail.CheckoutCode)"><i class="fa fa-money"></i> Pagar</button>
+            </div>
+        </div>
+
+        <div class="clearfix">
+            <label class="col-xs-4 ">Nome</label>
+            <div class="col-xs-8">{{model.bookingDetail.User.FirstName}} {{model.bookingDetail.User.LastName}}</div>
+        </div>
+
+        <div class="clearfix">
+            <label class="col-xs-4 ">CPF</label>
+            <div class="col-xs-8"><input class="transparentInput" ng-model="model.bookingDetail.User.CPF" ui-br-cpf-mask disabled /></div>
+        </div>
+
+        <div class="clearfix">
+            <label class="col-xs-4 ">Email</label>
+            <div class="col-xs-8" style=" word-break: break-all; ">{{model.bookingDetail.User.Email}}</div>
+        </div>
+    </div>
+
+    <div class="modal-footer text-center" ng-if="LoggedUser.IsAdmin">
+        <div class="col col-xs-12 text-center">
+            <button class="btn btn-success" type="button" ng-click="changePaymentStatus(model.bookingDetail.ID, model.bookingDetail.PaymentStatus); closeBookingDetail();">
+                <i class="fa fa-money"></i>
+                {{model.bookingDetail.PaymentStatus === "3" ? 'Remover' : 'Confirmar'}} Pagamento
+            </button>
+        </div>
+        <div class="col col-xs-12 text-center">
+            <button class="btn btn-primary " type="button" ng-click="changeFillAllTheDay(model.bookingDetail.Date, model.bookingDetail.FillAllTheDay); closeBookingDetail();">
+                <i class="fa fa-calendar-plus-o"></i>
+                {{model.bookingDetail.FillAllTheDay ? 'Liberar' : 'Bloquear'}} Restante do Dia
+            </button>
+        </div>
+        <div class="col col-xs-12 text-center">
+            <button class="btn btn-danger" type="button" ng-click=" deleteBooking(model.bookingDetail.ID); closeBookingDetail();">
+                <i class="fa fa-times"></i>
+                Excluir
+            </button>
+        </div>
+
+    </div>
+</div>

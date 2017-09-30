@@ -1,0 +1,75 @@
+﻿/* Set width on the form input elements since they're 100% wide by default */
+input, select, textarea {
+    max-width: 280px;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+    font-family: Roboto;
+    margin: 0;
+}
+
+body {
+    background-color: #222;
+    -webkit-font-smoothing: antialiased;
+    /*background-image: url(images/background.png);*/
+    background: linear-gradient(-90deg, #2c2a2d, #000);
+    background-size: 100%;
+    background-position: top right !important;
+    font-size: 12px;
+}
+
+* {
+    outline: none !important;
+    /*cursor: default;*/
+    font-family: Roboto;
+}
+
+a{
+    cursor: pointer !important;
+}
+
+.main-button {
+    background: #666666;
+    color: white;
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 1.428571429;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+
+.sucess-button {
+    background: #00BCC9 !important;
+}
+
+.main-button:focus, .main-button:hover {
+    color: white;
+}
+
+/*Hack to fix the exceeding paddings (http://stackoverflow.com/questions/23768152/using-container-fluid-within-bootstrap-cause-horizontal-scrollbar)*/
+.container-fluid {
+    padding-right: 15px !important;
+    padding-left: 15px !important;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.no-margin {
+    margin: 0px !important;
+}
+
+.no-padding {
+    padding: 0px !important;
+}
+
+
+/*.x2 {
+    zoom: 50%;
+}*/

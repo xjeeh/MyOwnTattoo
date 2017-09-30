@@ -1,0 +1,126 @@
+﻿<html ng-app="myownApp">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <meta name="keywords" content="palavras, separadas, por, virgula" />
+    <meta name="robots" content="all" />
+    <meta http-equiv="cache-control" content="max-age=0" />
+    <meta http-equiv="cache-control" content="no-cache" />
+    <meta http-equiv="expires" content="0" />
+    <meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
+    <meta http-equiv="pragma" content="no-cache" />
+
+    <title>MyOwn Tattoo</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+
+    <!-- Customizable CSS -->
+    <link rel="stylesheet" href="css/loading-bar.min.css" />
+    <link rel="stylesheet" href="css/animations.css" />
+    <link rel="stylesheet" href="css/animate.css" />
+
+    <!-- MyOwn CSS -->
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/bootstrap-offsets.css" />
+    <!--<link rel="stylesheet" href="css/bootstrap-xl.css">-->
+    <!-- LESS -->
+    <link rel="stylesheet/less" type="text/css" href="less/variables.less" />
+    <link rel="stylesheet/less" type="text/css" href="less/mixings.less" />
+    <link rel="stylesheet/less" type="text/css" href="less/main.less" />
+    <script>
+        less = { env: "production" }
+    </script>
+    <script src="js/less.min.js"></script>
+
+    <!-- Fonts -->
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <link rel="stylesheet" href="css/font-awesome-animation.min.css" />
+    <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css' />
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="css/images/favicon.ico?v=2" />
+
+    <!-- jQuery-->
+    <script src="js/jquery-3.0.0.min.js"></script>
+
+    <!-- JQueryUI-->
+    <script src="js/jquery-ui.js"></script>
+    <link rel="stylesheet" href="css/jquery-ui.css" />
+
+    <!-- Angular -->
+    <script src="js/angular.min.js"></script>
+    <script src="js/angular-route.min.js"></script>
+    <script src="js/angular-animate.min.js"></script>
+    <script src="js/angular-local-storage.min.js"></script>
+    <script src="js/angular-pt-br.min.js"></script>
+    <script src="js/angular-base64-upload.js"></script>
+    <script src="js/app/constants.js"></script>
+    <script src="js/app/app.js"></script>
+    <script src="js/app/config.js"></script>
+    <script src="js/app/directives.js"></script>
+    <script src="js/app/filters.js"></script>
+
+    <!--Angular Translate-->
+    <script src="js/angular-translate/messageformat.js"></script>
+    <script src="js/angular-translate/angular-cookies.js"></script>
+    <script src="js/angular-translate/angular-sanitize.js"></script>
+    <script src="js/angular-translate/angular-translate.js"></script>
+    <script src="js/angular-translate/angular-translate-interpolation-messageformat.js"></script>
+    <script src="js/angular-translate/angular-translate-storage-cookie.js"></script>
+    <script src="js/angular-translate/angular-translate-storage-local.js"></script>
+    <script src="js/angular-translate/angular-translate-loader-url.js"></script>
+    <script src="js/angular-translate/angular-translate-loader-static-files.js"></script>
+    <script src="js/angular-translate/angular-translate-handler-log.js"></script>
+
+    <!-- KendoUI Calendar -->
+    <link rel="stylesheet" href="js/KendoUI/kendo.common-material.min.css" />
+    <link rel="stylesheet" href="js/KendoUI/kendo.material.min.css" />
+    <link rel="stylesheet" href="js/KendoUI/kendo.material.mobile.min.css" />
+    <script src="js/KendoUI/kendo.ui.core.min.js"></script>
+    <script src="js/KendoUI/kendo.angular.min.js"></script>
+    <script src="js/KendoUI/kendo.culture.pt-BR.min.js"></script>
+    <script type="text/javascript">
+        kendo.culture("pt-BR")
+    </script>
+
+    <!-- Angular Maps Native-->
+    <!--<script src="js/angular-google-maps-native.js"></script>-->
+    <!-- Bootstrap & UI -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/angular-ui/ui-bootstrap.min.js"></script>
+    <script src="js/angular-ui/ui-bootstrap-tpls.min.js"></script>
+    <script src="js/angular-ui/angular-input-masks-dependencies.min.js"></script>
+    <script src="js/angular-ui/angular-input-masks.br.min.js"></script>
+
+    <!-- Angular Controllers, Services, Models e Directives -->
+    <script src="js/app/controllers/loginController.js"></script>
+    <script src="js/app/services/loginService.js"></script>
+    <script src="js/app/controllers/bookingController.js"></script>
+    <script src="js/app/services/bookingService.js"></script>
+    <script src="js/app/services/paymentService.js"></script>
+    <script src="js/app/services/modalService.js"></script>
+    <script src="js/app/services/imageService.js"></script>
+    <script src="js/app/services/authService.js"></script>
+    <script src="js/app/services/authInterceptorService.js"></script>
+    <script src="js/app/services/loginService.js"></script>
+
+    <!-- Custom Scripts -->
+    <script src="js/loading-bar.min.js"></script>
+    <script src="js/moment-with-locales.js"></script>
+    <script>
+        moment.locale("pt-BR")
+    </script>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="inner-content" ng-view=ng-view></div>
+    </div>
+</body>
+
+</html>

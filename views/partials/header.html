@@ -1,0 +1,30 @@
+﻿<header class="container-fluid fadeIn animated">
+    <div class="row">
+        <div class="col-xs-12 col-md-4 logo">
+            <div class="img" alt="Bruno Almeida Tattoo" />
+            <div class="shadow"></div>
+        </div>
+
+        <div class="col-xs-12 col-md-4">
+            <h1>Bruno Almeida</h1>
+            <h4>Sistema Agendamento de Tattoo</h4>
+        </div>
+
+        <div class="col-xs-12 col-md-4 login-area">
+            <span class="welcome">Olá {{LoggedUser.FirstName}}, seja bem-vindo!</span>
+            <button class="btn main-button logout" ng-click="LoggedUser == null ? go('/login') : doLogout()">
+                {{LoggedUser == null ? "Fazer Login" : "Logout"}}
+                <i class="fa" ng-class="LoggedUser == null ? 'fa-user-o' : 'fa-power-off'"></i>
+            </button>
+
+            <span ng-if="LoggedUser == null">
+                ou 
+                <button class="btn main-button register" ng-click="go('/register')" ng-if="LoggedUser == null">
+                    Cadastrar-se
+                    <i class="fa fa-pencil-square-o"></i>
+                </button>
+            </span>
+
+        </div>
+    </div>
+</header>

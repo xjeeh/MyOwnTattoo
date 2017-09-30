@@ -1,0 +1,62 @@
+﻿<style>
+    .modal {
+        z-index: 9999999999 !important;
+        -webkit-transform-style: preserve-3d;
+        -webkit-font-smoothing: subpixel-antialiased;
+        overflow: hidden;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: perspective(1px) translate3d(-50%, -50%, 0);
+    }
+
+    .modal-content {
+        border-radius: 3px;
+    }
+
+    .modal-body {
+        padding: 25px;
+    }
+
+        .modal-body p {
+            font-size: 1.5em;
+            color: black;
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        .modal-body span {
+            font-size: 1.5em;
+            color: black;
+        }
+
+        .modal-body i {
+            font-size: 40px;
+            float: left;
+            color: #05ABF2;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+
+
+    .modal-footer {
+        margin-top: 0px;
+    }
+
+</style>
+<div class="modal-body">
+    <i class="{{modalOptions.classIcon}}"></i>
+    <p>{{modalOptions.bodyTitle}}</p>
+    <span>{{modalOptions.bodyText}}</span>
+</div>
+
+<div class="modal-footer">
+    <button class="main-button"
+            data-ng-click="modalOptions.ok();">
+        {{modalOptions.actionButtonText}}
+    </button>
+    <button class="main-button" ng-if="!modalOptions.onlyAlert"
+            data-ng-click="modalOptions.close()">
+        {{modalOptions.closeButtonText}}
+    </button>
+</div>
