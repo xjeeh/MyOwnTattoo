@@ -1,13 +1,13 @@
 ﻿angular.module('myownApp')
-.config(['$httpProvider', '$routeProvider', 'cfpLoadingBarProvider', function ($httpProvider, $routeProvider, $cfpLoadingBarProvider) {
+    .config(['$httpProvider', '$routeProvider', 'cfpLoadingBarProvider', function ($httpProvider, $routeProvider, $cfpLoadingBarProvider) {
 
-    $httpProvider.interceptors.push('authInterceptorService');
+        $httpProvider.interceptors.push('authInterceptorService');
 
-    $cfpLoadingBarProvider.includeSpinner = false;
-    $cfpLoadingBarProvider.includeBar = true;
-    $cfpLoadingBarProvider.latencyThreshold = 50;
+        $cfpLoadingBarProvider.includeSpinner = false;
+        $cfpLoadingBarProvider.includeBar = true;
+        $cfpLoadingBarProvider.latencyThreshold = 50;
 
-    $routeProvider
+        $routeProvider
             .when('/login', {
                 templateUrl: 'views/login.html',
                 controller: 'loginController',
@@ -53,4 +53,4 @@
             .otherwise({
                 redirectTo: '/home'
             });
-}])
+    }])

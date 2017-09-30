@@ -5,23 +5,39 @@
         var self = this
         var controller = "/Booking"
 
+        // Debbug mode!
         self.ListPeriodDetail = function (startDate, finishDate) {
             var deferred = $q.defer()
             var data = "?startDate=" + startDate + "&finishDate=" + finishDate
-            $http.get(urls.baseAPIUrl + controller + '/ListPeriodDetail' + data, { headers: { 'Content-Type': 'application/x-www-form-urlencoded', } })
+            $http.get("http://localhost:3000/List")
                 .then(function successCallback(response) {
-                    if (response.data.Error) {
-                        deferred.reject(response.data.Message)
-                    } else {
-                        deferred.resolve(response.data)
-                    }
+                    var data = { List: response.data };
+                    deferred.resolve(data)
                 },
-            function errorCallback(response) {
-                deferred.reject(response.data.Error)
-            })
+                function errorCallback(response) {
+                    deferred.reject(response.data.Error)
+                })
 
             return deferred.promise
         };
+
+        // self.ListPeriodDetail = function (startDate, finishDate) {
+        //     var deferred = $q.defer()
+        //     var data = "?startDate=" + startDate + "&finishDate=" + finishDate
+        //     $http.get(urls.baseAPIUrl + controller + '/ListPeriodDetail' + data, { headers: { 'Content-Type': 'application/x-www-form-urlencoded', } })
+        //         .then(function successCallback(response) {
+        //             if (response.data.Error) {
+        //                 deferred.reject(response.data.Message)
+        //             } else {
+        //                 deferred.resolve(response.data)
+        //             }
+        //         },
+        //     function errorCallback(response) {
+        //         deferred.reject(response.data.Error)
+        //     })
+
+        //     return deferred.promise
+        // };        
 
         self.ListDayDetail = function (date, token) {
             var deferred = $q.defer()
@@ -34,9 +50,9 @@
                         deferred.resolve(response.data)
                     }
                 },
-            function errorCallback(response) {
-                deferred.reject(response.data.Error)
-            })
+                function errorCallback(response) {
+                    deferred.reject(response.data.Error)
+                })
 
             return deferred.promise
         };
@@ -52,9 +68,9 @@
                         deferred.resolve(response.data)
                     }
                 },
-            function errorCallback(response) {
-                deferred.reject(response.data.Error)
-            })
+                function errorCallback(response) {
+                    deferred.reject(response.data.Error)
+                })
 
             return deferred.promise
         };
@@ -69,9 +85,9 @@
                     else
                         deferred.resolve(response.data)
                 },
-            function (response) {
-                deferred.reject(response.data.Error)
-            })
+                function (response) {
+                    deferred.reject(response.data.Error)
+                })
 
             return deferred.promise
         };
@@ -87,9 +103,9 @@
                         deferred.resolve(response.data)
                     }
                 },
-            function errorCallback(response) {
-                deferred.reject(response.data.Error)
-            })
+                function errorCallback(response) {
+                    deferred.reject(response.data.Error)
+                })
 
             return deferred.promise
         };
@@ -105,9 +121,9 @@
                         deferred.resolve(response.data)
                     }
                 },
-            function errorCallback(response) {
-                deferred.reject(response.data.Error)
-            })
+                function errorCallback(response) {
+                    deferred.reject(response.data.Error)
+                })
 
             return deferred.promise
         };
@@ -123,9 +139,9 @@
                         deferred.resolve(response.data)
                     }
                 },
-            function errorCallback(response) {
-                deferred.reject(response.data.Error)
-            })
+                function errorCallback(response) {
+                    deferred.reject(response.data.Error)
+                })
 
             return deferred.promise
         };

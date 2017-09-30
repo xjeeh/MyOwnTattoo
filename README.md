@@ -5,6 +5,13 @@
 
 First of all, run `npm i` in the root of the project to install all packages and dependencies.
 
+#### Running json server - testing REST API
+
+Run `npm install -g json-server` to global install the server.
+
+Run `json-server db.json` for a testing local REST API. Navigate to `http://localhost:3000/` to check if it's ok.
+
+
 #### Development server (Before Restructuring)
 
 Run `npm install -g http-server` to globally install http-server (a simple http local server for files)
