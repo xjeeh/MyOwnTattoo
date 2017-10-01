@@ -1,0 +1,24 @@
+{
+  "name": "myowntattoo",
+  "version": "1.0.0",
+  "description": "Tattooing scheduling system",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "http-server | json-server db.json",
+    "build": "gulp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xjeeh/MyOwnTattoo.git"
+  },
+  "author": "Jefferson Santos",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/xjeeh/MyOwnTattoo/issues"
+  },
+  "homepage": "https://github.com/xjeeh/MyOwnTattoo#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1"
+  }
+}
